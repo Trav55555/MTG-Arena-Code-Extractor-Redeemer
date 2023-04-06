@@ -20,7 +20,7 @@ Make sure to [install Tesseract OCR](https://tesseract-ocr.github.io/tessdoc/Ins
 
 ## Usage
 
-Replace <path_to_tesseract_executable> in the script with the correct path to the Tesseract executable on your system. Replace <path_to_your_image_directory> with the path to the directory containing your image files.
+Replace <path_to_tesseract_executable> (C:\Program Files\Tesseract-OCR\tesseract.exe for windows) in the script with the correct path to the Tesseract executable on your system. Replace <path_to_your_image_directory> with the path to the directory containing your image files.
 
 To run the script, use the following command:
 
