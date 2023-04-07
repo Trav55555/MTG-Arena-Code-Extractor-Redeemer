@@ -1,29 +1,43 @@
-# Textbox OCR
+# MTG Arena Code Extractor & Redeemer
 
-This script is designed to perform OCR on a series of images, extract codes from the recognized text, and paste the codes into a specified textbox in an application window.
+This project contains two Python scripts that can be used to extract codes from images of Magic: The Gathering trading cards and input the extracted codes into the Magic: The Gathering Arena application.
 
-## Requirements
+## Prerequisites
 
-- Python 3.6 or later
-- OpenCV
-- Tesseract OCR
-- pytesseract
-- PyGetWindow
-- PyAutoGUI
-- screeninfo
+1. Install Python 3.7 or higher.
+2. Install the required Python packages using the following command:
 
-Install the required Python packages using:
-
-pip install opencv-python pytesseract pygetwindow pyautogui screeninfo
-
-Make sure to [install Tesseract OCR](https://tesseract-ocr.github.io/tessdoc/Installation.html) on your system as well.
+    ```bash
+    pip install -r requirements.txt
+    ```
 
 ## Usage
 
-Replace <path_to_tesseract_executable> (C:\Program Files\Tesseract-OCR\tesseract.exe for windows) in the script with the correct path to the Tesseract executable on your system. Replace <path_to_your_image_directory> with the path to the directory containing your image files.
+1. Place your card images in a folder.
 
-To run the script, use the following command:
+2. Run the first script to extract codes from the images:
 
-python textbox_ocr.py "Your Application Window Title" "Your Text Label"
+    ```bash
+    python just_use_textract.py <image_folder>
+    ```
 
-The script will focus the specified application window, locate the textbox with the given label, and paste the extracted codes into the textbox one by one.
+    Replace `<image_folder>` with the path to the folder containing your card images. The script will generate a `codes.txt` file containing the extracted codes.
+
+3. Run the second script to input the codes into Magic: The Gathering Arena:
+
+    ```bash
+    python mtg_arena_code_redeemer.py
+    ```
+
+    This script will attempt to launch the MTG Arena application and input the codes from `codes.txt`. If the application is already running, it will connect to the existing instance.
+
+## Troubleshooting
+
+If you encounter issues with coordinates, you can use the `--use-coordinates` or `-u` command-line option when running the second script. This will read the coordinates from a `coordinates.json` file instead of performing OCR on the image files:
+
+```bash
+python mtg_arena_code_redeemer.py --use-coordinates
+```
+
+## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
